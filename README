@@ -1,0 +1,7 @@
+1) You have to install first gasp api to run the game:
+how to install gasp: http://dev.laptop.org/pub/gasp/downloads/
+2) You are able to run the game using python2.6.
+how to run the game: 
+> chmod 755 crazy_ball.py
+> ./crazy_ball.py
+
