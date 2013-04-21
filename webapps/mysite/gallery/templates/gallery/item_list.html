@@ -1,0 +1,40 @@
+{% extends "gallery/base.html" %}
+
+{% block title %}Item List{% endblock %}
+
+{% block content %}
+<p><a href="{% url 'gallery:index' %}">&laquo; Back to main page</a></p>
+<h2>Items</h2>
+
+{% if item_list %}
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Sample Thumb</th>
+  </tr>
+  {% for item in item_list %}
+  <tr>
+    <td><i>{{ item.name }}</i></td>
+    <td>{{ item.description }}</td>
+    <td>
+      {% if item.photo_set.count %}
+      <a href="{% url 'gallery:item_detail' item.id %}">
+        <img src="{{ item.photo_set.all.0.image.thumb_url }}"/>
+      </a>
+      {% else %}
+      (No photo currently upload)
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>There are currently no items to display.</p>
+{% endif %}
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,14 @@
+{% extends "gallery/base.html" %}
+
+{% block title %}Photo{% endblock %}
+
+{% block content %}
+<p><a href="{{ photo.item.get_absolute_url }}">&laquo; Back to {{ photo.item.name}} detail page</a></p>
+
+<h2>{{ photo.item.name }} - {{ photo.title }}</h2>
+<img src="{{ photo.image.url }}" style="width:300px; height:300px;"/>
+{% if photo.caption %}
+<p>{{ photo.caption }}</p>
+{% endif %}
+
+{% endblock %}

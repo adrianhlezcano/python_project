@@ -1,0 +1,34 @@
+{% extends "gallery/base.html" %}
+
+{% block title %}Item{% endblock %}
+
+{% block content %}
+<p><a href="{% url 'gallery:item_list' %}">&laquo; Back to full listing</a></p>
+<h2>{{ item.name }}</h2>
+<p>{{ item.description }}<p>
+
+<h3>Photos</h3>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Photo</th>
+    <th>Caption</th>
+  </tr>
+  {% for photo in item.photo_set.all %}
+  <tr>
+    <td><i>{{ photo.title }}</i></td>
+    <td>
+      <a href="{{ photo.get_absolute_url }}">
+        <img src="{{ photo.image.thumb_url }}"/>
+      </a>
+    </td>
+    <td>{{ photo.caption }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
+
+
+
+
